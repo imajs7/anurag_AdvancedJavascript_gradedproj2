@@ -1,0 +1,167 @@
+:root {
+  --size-tn: 4px;
+  --size-sm: 8px;
+  --size-bs: 14px;
+  --size-md: 18px;
+  --size-lg: 24px;
+  --size-xl: 40px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.section-heading {
+  font-size: var(--size-lg);
+  text-align: center;
+}
+
+.btn {
+  padding: var(--size-sm) var(--size-bs);
+}
+
+/*
+** Switcher Styling
+*/
+.switcher .label {
+  font-size: var(--size-md);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2196f3;
+  border-radius: 30px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+#switch:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+.switcher {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: var(--size-bs);
+  margin-bottom: var(--size-xl);
+}
+
+/*
+** signin Page styling
+*/
+
+#login-wrapper {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+#login-wrapper .content {
+  padding: var(--size-lg);
+  border-radius: var(--size-tn);
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.4);
+  width: 90vw;
+  max-width: 350px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+/* login form slide effect */
+
+#login-wrapper .content .form-container {
+  position: relative;
+}
+
+#login-wrapper .content .form-container #signin-form,
+#login-wrapper .content .form-container #signup-form {
+  transition: all 600ms ease;
+}
+
+#login-wrapper .content .form-container #signin-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#login-wrapper .content .form-container #signup-form {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* form styling */
+form {
+  margin: var(--size-lg) 0;
+}
+form .row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--size-sm);
+}
+
+form .row.flex {
+  flex-direction: row;
+  align-items: center;
+}
+
+form .row:not(:last-child) {
+  margin-bottom: var(--size-bs);
+}
+
+form .row input[type="text"],
+form .row input[type="password"] {
+  width: calc(350px - 2 * var(--size-lg));
+  padding: var(--size-sm) var(--size-bs);
+  border: none;
+  border-bottom: 1px solid #999;
+  outline: none;
+}
+
+form .row input[type="text"]::placeholder,
+form .row input[type="password"]::placeholder {
+  color: #999;
+}

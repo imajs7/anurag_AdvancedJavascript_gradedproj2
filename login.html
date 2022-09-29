@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>signin | Resume App</title>
+</head>
+<body>
+    <div id="login-wrapper">
+
+        <div class="content">
+
+            <div class="switcher">
+                <label for="" class="label">Signin</label>
+
+                <label class="switch">
+                    <input type="checkbox" id="switch">
+                    <span class="slider"></span>
+                </label>
+
+                <label for="" class="label">Signup</label>
+            </div>
+            
+            <div class="form-container">
+
+                <div id="signin-form">
+
+                    <h2 class="section-heading">Signin</h2>
+    
+                    <form action="">
+    
+                        <div class="row">
+                            <input type="text" name="username-signin" id="username-signin" placeholder="Username">
+                        </div>
+        
+                        <div class="row">
+                            <input type="password" name="password-signin" id="password-signin" placeholder="Password">
+                        </div>
+    
+                        <div class="row flex">
+                            <input type="checkbox" name="keepLoggedIn" id="keepLoggedIn">
+                            <label for="keepLoggedIn">Keep me logged in</label>
+                        </div>
+    
+                        <div class="row">
+                            <button type="submit" class="btn" name="signin-btn">Sign In</button>
+                        </div>
+        
+                    </form>
+    
+                </div>
+    
+                <div id="signup-form">
+    
+                    <h2 class="section-heading">Signup</h2>
+                    
+                    <form action="">
+    
+                        <div class="row">
+                            <input type="text" name="username-signup" id="username-signup" placeholder="Username">
+                        </div>
+        
+                        <div class="row">
+                            <input type="password" name="password-signup" id="password-signup" placeholder="Password">
+                        </div>
+
+                        <div class="row">
+                            <input type="password" name="password-confirm" id="password-confirm" placeholder="Confirm Password">
+                        </div>
+
+                        <div class="row flex">
+                            <input type="checkbox" name="acceptance" id="acceptance">
+                            <label for="acceptance">I agree with the terms & policies</label>
+                        </div>
+
+                        <div class="row">
+                            <button type="submit" class="btn" name="signup-btn">Sign Up</button>
+                        </div>
+        
+                    </form>
+    
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <script src="./js/login.js"></script>
+</body>
+</html>
