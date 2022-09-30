@@ -42,20 +42,46 @@
             <div class="main">
 
                 <div class="sidebar">
+                    <div class="imp-info">
+                        <h3>Personal Information</h3>
                     <ul>
                         <li>Lorem ipsum dolor sit.</li>
                         <li>Lorem ipsum dolor sit.</li>
                         <li>Lorem ipsum dolor sit.</li>
                     </ul>
+                    <h3>Technical Skills</h3>
+                    <ul>
+                        <li>Lorem ipsum dolor sit.</li>
+                        <li>Lorem ipsum dolor sit.</li>
+                        <li>Lorem ipsum dolor sit.</li>
+                    </ul>
+                    <h3>Hobbies</h3>
+                    <ul>
+                        <li>Lorem ipsum dolor sit.</li>
+                        <li>Lorem ipsum dolor sit.</li>
+                        <li>Lorem ipsum dolor sit.</li>
+                    </ul>
+                    </div>
                 </div>
 
                 <div class="resume">
-                    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sed ullam, magni voluptatibus non consequuntur.</p>
-                    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sed ullam, magni voluptatibus non consequuntur.</p>
-                    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sed ullam, magni voluptatibus non consequuntur.</p>
+
+                    <div id="workexp">
+                        <h3>Work Experience in previous company</h3>
+                        <ul>
+                            <li><strong>Company Name:</strong> <span id="company-name"></span></li>
+                            <li><strong>Position:</strong> <span id="position"></span></li>
+                            <li><strong>Start Date:</strong> <span id="start-date"></span></li>
+                            <li><strong>End Date:</strong> <span id="end-date"></span></li>
+                            <li><strong>Summary:</strong> <span id="summary"></span></li>
+                        </ul>
+                    </div>
+
+                    <div id="projects">
+                        <h3>Projects</h3>
+                        <p><span id="project-name"></span> <span id="project-desc"></span></p>
+                    </div>
+
                 </div>
 
             </div>
@@ -65,8 +91,15 @@
     </div>
 
     <dialog>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat laboriosam saepe ipsam nam voluptas sint, provident neque ea accusantium, dicta odio officia, dolor aspernatur repudiandae quibusdam eos incidunt. Atque, eos?
-        <button id="close-dialog" class="btn">Close</button>
+        <div class="noresult-msg">
+            <div class="noresult-img">
+                <img src="./img/sad.png" alt="">
+            </div>
+            <div class="noresult-txt">
+                <p>Invalid search or No applications for this job!</p>
+                <button id="close-dialog" class="btn">Okay</button>
+            </div>
+        </div>
     </dialog>
 
     <script src="./js/index.js" type="module"></script>

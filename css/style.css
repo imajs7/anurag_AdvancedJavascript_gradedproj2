@@ -254,7 +254,7 @@ body {
 */
 
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -314,14 +314,57 @@ nav #search {
   display: flex;
   justify-content: space-between;
   padding: var(--size-lg);
+  gap: var(--size-md);
 }
 
 .container .content .main .sidebar {
   flex: 1 1 30%;
 }
+
+.container .content .main .sidebar .imp-info {
+  padding: var(--size-bs);
+  background-color: lightpink;
+}
+
+.container .content .main .sidebar .imp-info h3 {
+  padding: var(--size-tn) var(--size-sm);
+  color: white;
+  background-color: #888;
+}
+
+.container .content .main .sidebar .imp-info ul li {
+  text-align: right;
+}
+
 .container .content .main .resume {
   flex: 1 1 70%;
 }
+
+#workexp > ul {
+  margin: var(--size-lg);
+}
+
+#workexp > ul > li:not(:last-child) {
+  margin-bottom: var(--size-bs);
+}
+
+#workexp > ul > li:has(#summary) {
+  text-align: justify;
+}
+
+#projects > p {
+  text-align: justify;
+  margin: var(--size-lg);
+}
+
+#projects > p > #project-name {
+  font-weight: bold;
+}
+
+#projects > p > #project-name::after {
+  content: ":";
+}
+
 /*
 ** INDEX PAGE STYLING ENDS
 */
@@ -333,10 +376,20 @@ dialog {
   padding: var(--size-md);
   max-width: 540px;
   margin: auto;
+  border: 4px solid black;
+  border-radius: var(--size-sm);
+  box-shadow: 0 0 10px rgb(0 0 0 / 0.4);
 }
 
-dialog::backdrop {
-  background: rgb(0 0 0 / 0.9);
+.noresult-msg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size-lg);
+}
+
+.noresult-txt > *:not(:last-child) {
+  margin-bottom: var(--size-lg);
 }
 
 @media screen and (max-width: 970px) {
@@ -351,5 +404,14 @@ dialog::backdrop {
 
   .container .content .main {
     flex-direction: column;
+  }
+
+  .noresult-msg {
+    flex-direction: column;
+  }
+
+  .container .content .main .sidebar .imp-info ul li {
+    text-align: left;
+    padding-left: var(--size-bs);
   }
 }
