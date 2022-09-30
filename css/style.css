@@ -13,6 +13,14 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
 body {
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -25,6 +33,13 @@ body {
 
 .btn {
   padding: var(--size-sm) var(--size-bs);
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-weight: 700;
+  text-align: center;
 }
 
 /*
@@ -164,4 +179,8 @@ form .row input[type="password"] {
 form .row input[type="text"]::placeholder,
 form .row input[type="password"]::placeholder {
   color: #999;
+}
+
+form .row #forgot-password {
+  cursor: pointer;
 }
