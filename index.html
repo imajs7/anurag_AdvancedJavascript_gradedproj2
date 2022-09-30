@@ -8,21 +8,67 @@
     <title>Resume</title>
 </head>
 <body>
-    
-    <nav>
-        <div class="container">
+    <div class="container">
+
+        <nav>
             <button id="prev" class="navigate btn">Previous</button>
             <div id="search-form">
                 <form action="">
-                    <input type="search" name="search" id="search">
-                    <input type="submit" value="">
+                    <input type="search" name="search" id="search" placeholder="Search for keywords to filter the result">
                 </form>
             </div>
             <button id="next" class="navigate btn">Next</button>
-        </div>
-    </nav>
+        </nav>
+    
+        <div class="content">
 
-    <button id="logout">Logout</button>
+            <div class="header">
+                
+                <div class="action">
+                    <a href="" id="logout">Logout</a>
+                </div>
+
+                <div class="title">
+                    <h1>name</h1>
+                    <h4>short intro</h4>
+                </div>
+
+                <div class="profile">
+                    <img src="./img/user.png" alt="">
+                </div>
+
+            </div>
+            
+            <div class="main">
+
+                <div class="sidebar">
+                    <ul>
+                        <li>Lorem ipsum dolor sit.</li>
+                        <li>Lorem ipsum dolor sit.</li>
+                        <li>Lorem ipsum dolor sit.</li>
+                    </ul>
+                </div>
+
+                <div class="resume">
+                    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sed ullam, magni voluptatibus non consequuntur.</p>
+                    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sed ullam, magni voluptatibus non consequuntur.</p>
+                    <h4>Lorem ipsum dolor sit amet consectetur.</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti sed ullam, magni voluptatibus non consequuntur.</p>
+                </div>
+
+            </div>
+            
+        </div>
+
+    </div>
+
+    <dialog>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat laboriosam saepe ipsam nam voluptas sint, provident neque ea accusantium, dicta odio officia, dolor aspernatur repudiandae quibusdam eos incidunt. Atque, eos?
+        <button id="close-dialog" class="btn">Close</button>
+    </dialog>
+
     <script src="./js/index.js" type="module"></script>
 </body>
 </html>

@@ -5,12 +5,19 @@ if( authData != null && authData.status == true ) {
 }
 
 const switcher = document.querySelector("#switch");
+const errorMsg = document.querySelector('.error');
+
 const signinForm = document.querySelector("#signin-form");
 const signupForm = document.querySelector("#signup-form");
 
 const formSignup = document.querySelector('#formSignup');
 const formSignin = document.querySelector('#formSignin');
-const errorMsg = document.querySelector('.error');
+const keepLoggedIn = document.querySelector("#keepLoggedIn");
+if( authData == null ) {
+    keepLoggedIn.checked = false;
+} else {
+    keepLoggedIn.checked = authData.save;
+}
 
 switcher.addEventListener( 'click', () => {
     if( switcher.checked == true ) {
@@ -93,3 +100,4 @@ formSignin.addEventListener( 'submit', event => {
 const showPassword = () => {
     errorMsg.innerHTML = `Username = ${authData.username} <br/> Password = ${authData.password}`;
 };
+
