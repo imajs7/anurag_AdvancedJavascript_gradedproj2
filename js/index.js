@@ -12,6 +12,11 @@ let sampleSpace = data['resume'];
 // variable to keep track of current shown resume
 let activeResume = 0;
 
+const capitalize = word => {
+    const lower = word.toLowerCase();
+    return word.charAt(0).toUpperCase() + lower.slice(1);
+};
+
 // set visibility for prev & next controls
 const controlsVisibility = () => {
     const prev = document.querySelector("#prev");
@@ -28,7 +33,7 @@ const controlsVisibility = () => {
 
 // renders resume data on page
 const displayResume = () => {
-    console.log( sampleSpace[activeResume] );
+    //console.log( sampleSpace[activeResume] );
     controlsVisibility();
     document.querySelector(".title > h1").textContent = sampleSpace[activeResume].basics.name;
     document.querySelector(".title > h4").textContent = `Applied For: ${sampleSpace[activeResume].basics.AppliedFor}`;
@@ -39,6 +44,41 @@ const displayResume = () => {
     document.querySelector("#summary").textContent = sampleSpace[activeResume].work.Summary;
     document.querySelector("#project-name").textContent = sampleSpace[activeResume].projects.name;
     document.querySelector("#project-desc").textContent = sampleSpace[activeResume].projects.description;
+
+    let education = '';
+    for(let element in sampleSpace[activeResume].education) {
+        education = education + '<li><strong>' + capitalize( element ) + ':</strong> ';
+        education = education + Object.values( sampleSpace[activeResume].education[element] );
+        education = education + '</li>';
+    }
+    document.querySelector("#education-list").innerHTML = education;
+
+    let internship = '';
+    for(let element in sampleSpace[activeResume].Internship) {
+        internship = internship + '<li><strong>' + capitalize( element ) + ':</strong> ';
+        internship = internship + sampleSpace[activeResume].Internship[element];
+        internship = internship + '</li>';
+    }
+    document.querySelector("#internship-details").innerHTML = internship;
+
+    document.querySelector("#achievements-list > li").innerHTML = sampleSpace[activeResume].achievements.Summary
+
+    document.querySelector("#phone").textContent = sampleSpace[activeResume].basics.phone;
+    document.querySelector("#email").textContent = sampleSpace[activeResume].basics.email;
+    document.querySelector("#networks").innerHTML = "<a href='" + sampleSpace[activeResume].basics.profiles.url + "'>" + sampleSpace[activeResume].basics.profiles.network + "</a>";
+
+    let skills = '';
+    for(let element in sampleSpace[activeResume].skills['keywords']) {
+        skills = skills + '<li>' + capitalize( sampleSpace[activeResume].skills['keywords'][element] ) + '</li>';
+    }
+    document.querySelector("#tech-skills").innerHTML = skills;
+
+    let hobbies = '';
+    sampleSpace[activeResume].interests.hobbies.forEach( element => {
+        hobbies = hobbies + '<li>' + capitalize( element ) + '</li>';
+    } );
+    document.querySelector("#hobbies").innerHTML = hobbies;
+
 };
 
 // updates activeResume & calls displayResume for Previous resume
@@ -92,6 +132,7 @@ document.querySelector("#close-dialog").addEventListener( 'click', () => {
     document.querySelector("dialog").close();
     document.querySelector(".content").style.visibility = 'visible';
     sampleSpace = data['resume'];
+    displayResume();
 } );
 
 // displays first resume on page load

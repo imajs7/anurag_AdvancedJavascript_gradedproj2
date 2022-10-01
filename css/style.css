@@ -365,6 +365,19 @@ nav #search {
   content: ":";
 }
 
+#education-list,
+#internship-details,
+#achievements-list {
+  list-style-type: square;
+  margin: var(--size-lg) var(--size-xl) var(--size-xl);
+}
+
+#education-list > li:not(:last-child),
+#internship-details > li:not(:last-child),
+#achievements-list > li:not(:last-child) {
+  margin-bottom: var(--size-bs);
+}
+
 /*
 ** INDEX PAGE STYLING ENDS
 */
