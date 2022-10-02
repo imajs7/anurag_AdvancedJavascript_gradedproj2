@@ -12,9 +12,13 @@ let sampleSpace = data['resume'];
 // variable to keep track of current shown resume
 let activeResume = 0;
 
-const capitalize = word => {
-    const lower = word.toLowerCase();
-    return word.charAt(0).toUpperCase() + lower.slice(1);
+// capitalize string
+const capitalize = sentence => {
+    const words = sentence.split(" ");
+    for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+    return words.join(" ");
 };
 
 // set visibility for prev & next controls
@@ -35,14 +39,14 @@ const controlsVisibility = () => {
 const displayResume = () => {
     //console.log( sampleSpace[activeResume] );
     controlsVisibility();
-    document.querySelector(".title > h1").textContent = sampleSpace[activeResume].basics.name;
-    document.querySelector(".title > h4").textContent = `Applied For: ${sampleSpace[activeResume].basics.AppliedFor}`;
-    document.querySelector("#company-name").textContent = sampleSpace[activeResume].work['Company Name'];
-    document.querySelector("#position").textContent = sampleSpace[activeResume].work.Position;
+    document.querySelector("#candidate-name").textContent = capitalize( sampleSpace[activeResume].basics.name );
+    document.querySelector("#short-intro").textContent = capitalize( sampleSpace[activeResume].basics.AppliedFor );
+    document.querySelector("#company-name").textContent = capitalize( sampleSpace[activeResume].work['Company Name'] );
+    document.querySelector("#position").textContent = capitalize( sampleSpace[activeResume].work.Position );
     document.querySelector("#start-date").textContent = sampleSpace[activeResume].work['Start Date'];
     document.querySelector("#end-date").textContent = sampleSpace[activeResume].work['End Date'];
     document.querySelector("#summary").textContent = sampleSpace[activeResume].work.Summary;
-    document.querySelector("#project-name").textContent = sampleSpace[activeResume].projects.name;
+    document.querySelector("#project-name").textContent = capitalize( sampleSpace[activeResume].projects.name );
     document.querySelector("#project-desc").textContent = sampleSpace[activeResume].projects.description;
 
     let education = '';
@@ -81,6 +85,13 @@ const displayResume = () => {
 
 };
 
+// reset app
+const reset = () => {
+    document.querySelector("#search").value = '';
+    sampleSpace = data['resume'];
+    displayResume();
+}
+
 // updates activeResume & calls displayResume for Previous resume
 const showPrevious = () => {
     activeResume = Math.max( activeResume - 1, 0);
@@ -101,14 +112,18 @@ document.querySelector("#search").addEventListener( 'keydown', ( event ) => {
         sampleSpace = data['resume'].filter( item => item['basics'].AppliedFor.toLowerCase() === event.target.value.toLowerCase() );
         activeResume = 0;
         if( sampleSpace.length < 1 ) {
-            controlsVisibility();
             document.querySelector(".content").style.visibility = 'hidden';
             document.querySelector("dialog").showModal();
+            return;
         }
+        controlsVisibility();
         displayResume();
     }
 
 } );
+
+//reset app button event handler
+document.querySelector("#reset").addEventListener( 'click', reset );
 
 // event handlers for previous & next buttons
 document.querySelector("#prev").addEventListener( 'click', showPrevious );
@@ -131,8 +146,7 @@ document.querySelector("#close-dialog").addEventListener( 'click', () => {
     document.querySelector("#search").value = '';
     document.querySelector("dialog").close();
     document.querySelector(".content").style.visibility = 'visible';
-    sampleSpace = data['resume'];
-    displayResume();
+    reset();
 } );
 
 // displays first resume on page load

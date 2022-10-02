@@ -281,6 +281,14 @@ nav #search {
   padding: var(--size-sm) var(--size-bs);
 }
 
+nav #reset {
+  font-size: 18px;
+  font-weight: 700;
+  padding: var(--size-tn);
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
 .container .content {
   margin: var(--size-md) var(--size-sm);
   border: 1px solid black;

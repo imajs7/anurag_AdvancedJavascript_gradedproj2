@@ -13,9 +13,8 @@
         <nav>
             <button id="prev" class="navigate btn">Previous</button>
             <div id="search-form">
-                <form action="">
-                    <input type="search" name="search" id="search" placeholder="Search for keywords to filter the result">
-                </form>
+                <input type="search" name="search" id="search" placeholder="Search for keywords to filter the result">
+                <button id="reset" title="Reset App">&#10227;</button>
             </div>
             <button id="next" class="navigate btn">Next</button>
         </nav>
@@ -29,8 +28,8 @@
                 </div>
 
                 <div class="title">
-                    <h1>name</h1>
-                    <h4>short intro</h4>
+                    <h1 id="candidate-name">name</h1>
+                    <h4>Applied For: <span id="short-intro"></span></h4>
                 </div>
 
                 <div class="profile">
