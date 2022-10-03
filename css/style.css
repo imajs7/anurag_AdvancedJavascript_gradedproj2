@@ -290,6 +290,8 @@ nav #reset {
 }
 
 .container .content {
+  container-type: inline-size;
+  container-name: main-content;
   margin: var(--size-md) var(--size-sm);
   border: 1px solid black;
   box-shadow: 0 0 10px rgb(0 0 0 / 0.4);
@@ -335,9 +337,14 @@ nav #reset {
 }
 
 .container .content .main .sidebar .imp-info h3 {
+  margin-bottom: var(--size-tn);
   padding: var(--size-tn) var(--size-sm);
   color: white;
   background-color: #888;
+}
+
+.container .content .main .sidebar .imp-info h3:not(:first-of-type) {
+  margin-top: var(--size-md);
 }
 
 .container .content .main .sidebar .imp-info ul li {
@@ -413,26 +420,24 @@ dialog {
   margin-bottom: var(--size-lg);
 }
 
+@container main-content (inline-size < 700px) {
+  .main {
+    flex-direction: column;
+  }
+  .container .content .main .sidebar .imp-info ul li {
+    text-align: left;
+    padding-left: var(--size-bs);
+  }
+}
+
 @media screen and (max-width: 970px) {
   .container .content .header {
+    flex-direction: column-reverse;
   }
 }
 
 @media screen and (max-width: 570px) {
-  .container .content .header {
-    flex-direction: column-reverse;
-  }
-
-  .container .content .main {
-    flex-direction: column;
-  }
-
   .noresult-msg {
     flex-direction: column;
-  }
-
-  .container .content .main .sidebar .imp-info ul li {
-    text-align: left;
-    padding-left: var(--size-bs);
   }
 }

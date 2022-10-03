@@ -78,7 +78,7 @@ formSignin.addEventListener( 'submit', event => {
     const usernameSignin = document.querySelector("#username-signin");
     const passwordSignin = document.querySelector("#password-signin");
     if( authData == null ) {
-        errorMsg.textContent = 'No account created. Please signup to use this app';
+        errorMsg.innerHTML = 'No user found<br/>Sign up to use this app';
         formSignin.reset();
         return;
     }
@@ -98,6 +98,10 @@ formSignin.addEventListener( 'submit', event => {
 } );
 
 const showPassword = () => {
-    errorMsg.innerHTML = `Username = ${authData.username} <br/> Password = ${authData.password}`;
+    if( authData == null ) {
+        errorMsg.innerHTML = 'No user found<br/>Sign up to use this app';
+    } else {
+        errorMsg.innerHTML = `Username = ${authData.username} <br/> Password = ${authData.password}`;
+    }
 };
 

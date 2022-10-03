@@ -89,6 +89,7 @@ const displayResume = () => {
 const reset = () => {
     document.querySelector("#search").value = '';
     sampleSpace = data['resume'];
+    activeResume = 0;
     displayResume();
 }
 
