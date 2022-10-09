@@ -40,7 +40,8 @@ const controlsVisibility = () => {
 // renders resume data on page
 const displayResume = () => {
 
-    console.log( `Sample space: ${sampleSpace}` );
+    console.log( 'Current sample space:' );
+    //console.log( JSON.stringify( sampleSpace ) );
 
     controlsVisibility();
 
