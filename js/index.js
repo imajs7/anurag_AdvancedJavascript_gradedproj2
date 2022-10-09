@@ -1,5 +1,6 @@
 let authData = JSON.parse( localStorage.getItem('resume-auth-data') );
 
+// redirect to login page if user isNotLogin
 if( authData == null || authData.status == false ) {
     location.href = 'login.html';
     exit;
@@ -23,6 +24,7 @@ const capitalize = sentence => {
 
 // set visibility for prev & next controls
 const controlsVisibility = () => {
+    console.log( 'visibility of controls set' );
     const prev = document.querySelector("#prev");
     const next = document.querySelector("#next");
     
@@ -37,8 +39,11 @@ const controlsVisibility = () => {
 
 // renders resume data on page
 const displayResume = () => {
-    //console.log( sampleSpace[activeResume] );
+
+    console.log( `Sample space: ${sampleSpace}` );
+
     controlsVisibility();
+
     document.querySelector("#candidate-name").textContent = capitalize( sampleSpace[activeResume].basics.name );
     document.querySelector("#short-intro").textContent = capitalize( sampleSpace[activeResume].basics.AppliedFor );
     document.querySelector("#company-name").textContent = capitalize( sampleSpace[activeResume].work['Company Name'] );
@@ -67,6 +72,7 @@ const displayResume = () => {
 
     document.querySelector("#achievements-list > li").innerHTML = sampleSpace[activeResume].achievements.Summary
 
+    // sidebar info
     document.querySelector("#phone").textContent = sampleSpace[activeResume].basics.phone;
     document.querySelector("#email").textContent = sampleSpace[activeResume].basics.email;
     document.querySelector("#networks").innerHTML = "<a href='" + sampleSpace[activeResume].basics.profiles.url + "'>" + sampleSpace[activeResume].basics.profiles.network + "</a>";
@@ -87,6 +93,7 @@ const displayResume = () => {
 
 // reset app
 const reset = () => {
+    console.log( 'App refreshed' );
     document.querySelector("#search").value = '';
     sampleSpace = data['resume'];
     activeResume = 0;
@@ -95,29 +102,48 @@ const reset = () => {
 
 // updates activeResume & calls displayResume for Previous resume
 const showPrevious = () => {
+    console.log( 'Nav previous function called' );
     activeResume = Math.max( activeResume - 1, 0);
     displayResume();
 };
 
 // updates activeResume & calls displayResume for Next resume
 const showNext = () => {
+    console.log( 'Nav next function called' );
     activeResume = Math.min( activeResume + 1, sampleSpace.length - 1);
     displayResume();
 };
 
-// build searcheable data sample by query string
+// search functionality
 document.querySelector("#search").addEventListener( 'keydown', ( event ) => {
     
     if( event.key == 'Enter' ) {
         event.preventDefault();
-        sampleSpace = data['resume'].filter( item => item['basics'].AppliedFor.toLowerCase() === event.target.value.toLowerCase() );
+        console.log( 'Search functiona invoked' );
+
+        // build searcheable data sample by query string
+        sampleSpace = data['resume'].filter( item => { 
+            return item['basics'].AppliedFor.toLowerCase() === event.target.value.toLowerCase();
+        });
+
+        //reset display index after each query
         activeResume = 0;
+
+        // set page visibility options in case of zero search result
         if( sampleSpace.length < 1 ) {
+            console.log( 'search result sampleSpace length = 0' );
+            console.log( 'modal window opened' );
             document.querySelector(".content").style.visibility = 'hidden';
             document.querySelector("dialog").showModal();
             return;
+        } else {
+            console.log( 'search result sampleSpace length = ', sampleSpace.length );
         }
+
+        // set nav button visibility
         controlsVisibility();
+
+        // display result from newly created sample space
         displayResume();
     }
 
@@ -133,6 +159,7 @@ document.querySelector("#next").addEventListener( 'click', showNext );
 // event handler for logout button
 document.querySelector('#logout').addEventListener( 'click', e => {
     e.preventDefault();
+    console.log( 'logout button pressed' );
     if( authData.save == true ) {
         authData.status = false;
         localStorage.setItem('resume-auth-data', JSON.stringify( authData ) );
@@ -144,6 +171,7 @@ document.querySelector('#logout').addEventListener( 'click', e => {
 
 // event handler for close modal button
 document.querySelector("#close-dialog").addEventListener( 'click', () => {
+    console.log( 'modal window closed' );
     document.querySelector("#search").value = '';
     document.querySelector("dialog").close();
     document.querySelector(".content").style.visibility = 'visible';
