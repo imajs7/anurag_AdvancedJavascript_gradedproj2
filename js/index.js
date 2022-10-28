@@ -6,9 +6,19 @@ if( authData == null || authData.status == false ) {
     exit;
 }
 
-// import data from json file
-import data from '../data/Data.json' assert { type: "json" };
-let sampleSpace = data['resume'];
+// fetch data from server
+const baseUrl = 'http://localhost:4000/resume';
+const fetchData = async () => {
+    try {
+        const response = await fetch( baseUrl );
+        const rawData = await response.json();
+        return rawData;
+    } catch ( error ) {
+        console.log( `Fetch error: ${error}` );
+    }
+};
+let sampleSpace = await fetchData();
+const originalSamlpeSpace = sampleSpace;
 
 // variable to keep track of current shown resume
 let activeResume = 0;
@@ -96,7 +106,7 @@ const displayResume = () => {
 const reset = () => {
     console.log( 'App refreshed' );
     document.querySelector("#search").value = '';
-    sampleSpace = data['resume'];
+    sampleSpace = originalSamlpeSpace;
     activeResume = 0;
     displayResume();
 }
@@ -123,7 +133,7 @@ document.querySelector("#search").addEventListener( 'keydown', ( event ) => {
         console.log( 'Search functiona invoked' );
 
         // build searcheable data sample by query string
-        sampleSpace = data['resume'].filter( item => { 
+        sampleSpace = originalSamlpeSpace.filter( item => { 
             return item['basics'].AppliedFor.toLowerCase() === event.target.value.toLowerCase();
         });
 
